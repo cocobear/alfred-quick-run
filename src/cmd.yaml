@@ -1,0 +1,64 @@
+---
+- key: file
+  remark: 文件批量操作
+  values:
+      - cmd: find ./ -type f -exec dos2unix {} \;
+        remark: 转换当前目录下所有文件换行为unix格式
+- key: yum
+  remark: yum包管理
+  values:
+      - cmd: yum install --downloadonly --downloaddir=/root/python python36u python36u-pip
+        remark: yum下载指定的包到指定目录不安装
+
+
+- key: ss
+  remark: 科学上网
+  values:
+      - cmd: export http_proxy="http://127.0.0.1:8001"; export HTTP_PROXY="http://127.0.0.1:8001"; export https_proxy="http://127.0.0.1:8001"; export HTTPS_PROXY="http://127.0.0.1:8001"
+        remark: 终端打开代理
+      - cmd: unset http_proxy && unset http_proxys && unset HTTP_PROXY && unset HTTPS_PROXY
+        remark: 终端关闭代理
+
+
+- key: mysql
+  remark: mysql常用命令
+  values:
+      - cmd: "echo 'mysqldump -uroot -p DB_NAME > DB_NAME.sql' && mysqldump -uroot -p "
+        remark: mysql备份数据库
+      - cmd: "mysql -uroot -pRoot123*"
+        remark: mysql本机登录
+
+
+- key: git
+  remark: git常用命令
+  values:
+      - cmd: git branch -r | sed 's/origin///g' | grep '/' | xargs git push origin --delete
+        remark: git批量删除远程分支
+
+
+- key: docker
+  remark: docker常用命令
+  values:
+      - cmd: docker stop $(docker ps -aq)
+        remark: docker停止所有容器
+      - cmd: docker rm $(docker ps -aq)
+        remark: docker删除所有容器
+      - cmd: docker rmi $(docker images -q)
+        remark: docker删除所有镜像
+
+- key: pip
+  remark: pip包管理
+  values:
+      - cmd: pip install --target=. Alfred-Workflow
+        remark: pip安装包到当前目录
+      - cmd: pip freezeirements.txt
+        remark: 输出所有pip安装的包
+      - cmd: pip download -r requirements.txt  -d pipdir
+        remark: pip下载所有包到指定目录不安装
+
+
+- key: bookmark
+  remark: 书签
+  values:
+      - cmd: http://c.js.org
+        remark: blog
